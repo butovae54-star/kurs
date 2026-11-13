@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дело о четырёх решениях — курс о безопасной работе с ИИ</title>
+<meta name="description" content="Интерактивный курс о безопасной работе с ИИ-инструментами. Сюжетное расследование, шесть упражнений, финальный тест.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <span class="topbar__case">Дело № 2026-01 · Атлас Групп</span>
+    <span class="topbar__episode" id="episodeLabel"></span>
+  </div>
+  <div class="progress" role="progressbar" aria-label="Прогресс курса" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="progress__fill" id="progressFill"></div>
+  </div>
+</header>
+
+<main id="app" class="app" aria-live="polite"></main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <span class="foot__score" id="scoreLabel">Верных решений: 0 из 12</span>
+    <button class="btn btn--primary" id="nextBtn" type="button" hidden>Дальше</button>
+  </div>
+</footer>
+
+<div class="overlay" id="resumeOverlay" hidden>
+  <div class="overlay__box" role="dialog" aria-modal="true" aria-labelledby="resumeTitle">
+    <h2 id="resumeTitle">Вы уже начинали</h2>
+    <p>Можно продолжить с того места, где остановились, или начать заново.</p>
+    <div class="overlay__actions">
+      <button class="btn btn--primary" id="resumeContinue" type="button">Продолжить</button>
+      <button class="btn btn--ghost" id="resumeRestart" type="button">Начать заново</button>
+    </div>
+  </div>
+</div>
+
+<div class="devpanel" id="devpanel" hidden>
+  <div class="devpanel__head">
+    <strong>Экраны</strong>
+    <button class="devpanel__close" id="devClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+  <div class="devpanel__list" id="devList"></div>
+  <button class="devpanel__reset" id="devReset" type="button">Сбросить прогресс</button>
+</div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

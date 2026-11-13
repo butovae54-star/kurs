@@ -1,0 +1,292 @@
+/* ===== Токены ===== */
+:root{
+  --paper:#FAF8F5;
+  --surface:#FFFFFF;
+  --ink:#16181D;
+  --muted:#5B6270;
+  --line:#E3DED5;
+  --accent:#2A4BD7;
+  --accent-ink:#FFFFFF;
+  --marker:#FFE066;
+  --ok:#15803D;
+  --warn:#A16207;
+  --risk:#C2410C;
+  --stop:#B91C1C;
+  --radius-card:14px;
+  --radius-btn:10px;
+  --shadow:0 1px 2px rgba(0,0,0,.04);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;line-height:1.25;margin:0 0 .5em}
+h1{font-size:28px}
+h2{font-size:21px}
+h3{font-size:18px}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ===== Шапка ===== */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(250,248,245,.94);backdrop-filter:blur(6px)}
+.topbar__inner{
+  max-width:760px;margin:0 auto;padding:14px 20px 10px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  font-size:13px;color:var(--muted);letter-spacing:.01em;
+}
+.topbar__case{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar__episode{white-space:nowrap;font-weight:500;color:var(--ink)}
+.progress{height:3px;background:var(--line)}
+.progress__fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+
+/* ===== Контейнер ===== */
+.app{max-width:720px;margin:0 auto;padding:32px 20px 40px;min-height:60vh}
+.screen{animation:rise .18s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .screen{animation:none}
+  *{transition:none!important;animation:none!important}
+}
+
+/* ===== Типографика экранов ===== */
+.kicker{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+.lead{font-size:19px;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+
+/* ===== Кнопки ===== */
+.btn{
+  font-family:inherit;font-size:16px;font-weight:500;line-height:1;
+  padding:14px 22px;min-height:44px;border-radius:var(--radius-btn);
+  border:1px solid transparent;cursor:pointer;background:var(--surface);color:var(--ink);
+  transition:background .15s ease,border-color .15s ease;
+}
+.btn--primary{background:var(--accent);color:var(--accent-ink)}
+.btn--primary:hover{background:#2140bd}
+.btn--ghost{border-color:var(--line);background:transparent}
+.btn--ghost:hover{background:#F3F0EA}
+.btn--wide{width:100%}
+.btn[disabled]{opacity:.45;cursor:default}
+
+/* ===== Титул ===== */
+.cover{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:44px 32px 36px;box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.cover::after{
+  content:"";position:absolute;top:0;right:0;width:64px;height:64px;
+  background:linear-gradient(225deg,var(--paper) 50%,transparent 50%);
+  border-left:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.cover__stamp{
+  display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stop);border:1px solid currentColor;border-radius:4px;
+  padding:4px 8px;margin-bottom:24px;transform:rotate(-2deg);
+}
+.cover h1{font-size:40px;margin-bottom:12px}
+.cover__sub{font-size:19px;color:var(--muted);margin-bottom:28px}
+.cover__meta{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-bottom:28px}
+
+/* ===== Сцена с персонажем ===== */
+.scene{display:flex;gap:16px;align-items:flex-start}
+.avatar{
+  flex:0 0 48px;width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:16px;color:#fff;letter-spacing:.02em;
+}
+.scene__body{flex:1;min-width:0}
+.scene__name{font-weight:600;font-size:15px;margin-bottom:2px}
+.scene__role{font-size:13px;color:var(--muted);margin-bottom:10px}
+.bubble{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);
+  padding:18px 20px;box-shadow:var(--shadow);
+}
+.bubble--plain{font-size:18px}
+
+/* ===== Мессенджер ===== */
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);padding:18px;box-shadow:var(--shadow)}
+.chat__row{display:flex;gap:10px;margin-bottom:14px;align-items:flex-end}
+.chat__row--out{flex-direction:row-reverse}
+.chat__msg{max-width:80%;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.5}
+.chat__row--in .chat__msg{background:#F2F0EB;border-bottom-left-radius:4px}
+.chat__row--out .chat__msg{background:#E4E9FB;border-bottom-right-radius:4px}
+.chat__author{font-size:12px;color:var(--muted);margin-bottom:4px}
+.chat__typing{display:inline-flex;gap:3px;align-items:center;height:12px}
+.chat__typing i{width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.4;animation:blink 1.2s infinite}
+.chat__typing i:nth-child(2){animation-delay:.2s}
+.chat__typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:.9}}
+.chat__hidden{display:none}
+
+/* ===== Мок документа ===== */
+.doc{
+  background:#FFFDF8;border:1px solid var(--line);border-radius:8px;
+  padding:22px 20px;box-shadow:var(--shadow);font-size:15px;line-height:1.7;
+  font-family:Georgia,"Times New Roman",serif;
+}
+.doc__title{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.zone{
+  font:inherit;background:transparent;border:none;border-bottom:1px dashed var(--muted);
+  color:inherit;padding:0 1px;cursor:pointer;border-radius:3px;transition:background .15s ease;
+}
+.zone:hover{background:#F1EEE7}
+.zone--found{background:var(--marker);border-bottom-color:transparent;box-shadow:0 0 0 2px var(--marker)}
+.zone--missed{background:#F6E3DC;border-bottom-color:transparent}
+.counter{font-size:14px;color:var(--muted);margin-bottom:12px}
+
+/* ===== Фидбэк ===== */
+.feedback{
+  margin-top:16px;padding:14px 16px;border-radius:10px;font-size:15px;
+  border-left:3px solid var(--accent);background:#F5F6FC;
+}
+.feedback--ok{border-left-color:var(--ok);background:#F1F7F2}
+.feedback--near{border-left-color:var(--warn);background:#FBF6EC}
+.feedback--note{border-left-color:var(--line);background:#F7F5F1}
+
+/* ===== Плашки ===== */
+.note{
+  margin-top:18px;padding:16px 18px;border-radius:10px;background:#F7F5F1;
+  border:1px solid var(--line);font-size:15px;
+}
+.marker-line{background:var(--marker);padding:2px 4px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* ===== Таблица ===== */
+.table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.table th,.table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+.table th{font-weight:600;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* ===== Аккордеон ===== */
+.acc{border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:10px;overflow:hidden}
+.acc__head{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  padding:14px 16px;background:none;border:none;cursor:pointer;font:inherit;font-weight:500;min-height:44px;
+}
+.acc__head{list-style:none}
+.acc__head::-webkit-details-marker{display:none}
+.acc__head::marker{content:""}
+.acc__icon{flex:0 0 22px;display:flex}
+.tone-ok{color:var(--ok)}
+.tone-warn{color:var(--warn)}
+.tone-risk{color:var(--risk)}
+.tone-stop{color:var(--stop)}
+.acc__chev{margin-left:auto;color:var(--muted);transition:transform .2s ease}
+.acc[open] .acc__chev{transform:rotate(180deg)}
+.acc__body{padding:0 16px 16px;font-size:15px;color:var(--ink)}
+.acc__body p{margin-bottom:.6em}
+
+/* ===== Сортировка ===== */
+.card-stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);padding:24px 20px;text-align:center;box-shadow:var(--shadow);margin-bottom:16px}
+.card-stage__label{font-size:13px;color:var(--muted);margin-bottom:8px}
+.card-stage__text{font-size:18px;line-height:1.5}
+.bins{display:grid;gap:10px}
+.bin{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  padding:14px 16px;min-height:52px;border-radius:10px;border:1px solid var(--line);
+  background:var(--surface);cursor:pointer;font:inherit;font-size:15px;font-weight:500;
+  transition:border-color .15s ease,background .15s ease;
+}
+.bin:hover{background:#F7F5F1}
+.bin__icon{flex:0 0 22px;display:flex}
+.bin--ok .bin__icon{color:var(--ok)}
+.bin--warn .bin__icon{color:var(--warn)}
+.bin--risk .bin__icon{color:var(--risk)}
+.bin--stop .bin__icon{color:var(--stop)}
+
+/* ===== Варианты ответа ===== */
+.option{
+  display:flex;gap:12px;width:100%;text-align:left;padding:16px;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  cursor:pointer;font:inherit;font-size:16px;line-height:1.45;margin-bottom:10px;
+  transition:border-color .15s ease,background .15s ease;
+}
+.option:hover{background:#F7F5F1}
+.option__mark{
+  flex:0 0 22px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;
+}
+.option--picked{border-color:var(--accent);background:#F5F6FC}
+.option--picked .option__mark{border-color:var(--accent);background:var(--accent);color:#fff}
+
+/* ===== Калькулятор ===== */
+.calc-row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.calc-row__q{font-size:15px;flex:1 1 240px;min-width:0}
+.calc-row__opts{display:flex;gap:6px}
+.chip{
+  font:inherit;font-size:14px;padding:9px 16px;min-height:44px;min-width:60px;
+  border-radius:8px;border:1px solid var(--line);background:var(--surface);cursor:pointer;
+}
+.chip--on-yes{background:#EAF5EC;border-color:var(--ok);color:var(--ok);font-weight:500}
+.chip--on-no{background:#FBEDE8;border-color:var(--stop);color:var(--stop);font-weight:500}
+.verdict{margin-top:18px;padding:18px;border-radius:10px;font-size:16px;font-weight:500}
+.verdict--ok{background:#EDF6EF;color:#0F5A2A;border:1px solid #C9E3D0}
+.verdict--warn{background:#FBF5E8;color:#7A4A06;border:1px solid #EBDCB8}
+.verdict--stop{background:#FBECE9;color:#8C2A15;border:1px solid #EFCFC6}
+.verdict__hint{font-weight:400;font-size:14px;margin-top:8px;color:inherit;opacity:.9}
+
+/* ===== Тест ===== */
+.qmeta{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.result{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;text-align:center}
+.result__score{font-family:Lora,serif;font-size:40px;font-weight:600;margin-bottom:6px}
+
+/* ===== Памятка ===== */
+.rules{list-style:none;padding:0;margin:20px 0}
+.rules li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+.rules__num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+
+/* ===== Подвал ===== */
+.foot{position:sticky;bottom:0;background:rgba(250,248,245,.96);border-top:1px solid var(--line);backdrop-filter:blur(6px)}
+.foot__inner{max-width:720px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.foot__score{font-size:13px;color:var(--muted)}
+
+/* ===== Оверлей ===== */
+.overlay{position:fixed;inset:0;background:rgba(22,24,29,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.overlay__box{background:var(--surface);border-radius:var(--radius-card);padding:28px;max-width:420px;width:100%;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.overlay__actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+/* ===== Дев-панель ===== */
+.devpanel{position:fixed;right:16px;top:60px;width:280px;max-height:70vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:60;font-size:14px}
+.devpanel__head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
+.devpanel__close{background:none;border:none;font-size:20px;line-height:1;cursor:pointer;color:var(--muted)}
+.devpanel__list{padding:6px}
+.devpanel__item{display:block;width:100%;text-align:left;background:none;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font:inherit;font-size:13px;color:var(--muted)}
+.devpanel__item:hover{background:#F3F0EA;color:var(--ink)}
+.devpanel__item--active{background:#F5F6FC;color:var(--accent);font-weight:500}
+.devpanel__reset{width:100%;padding:10px;border-top:1px solid var(--line);background:none;border-left:none;border-right:none;border-bottom:none;cursor:pointer;font:inherit;font-size:13px;color:var(--stop)}
+
+/* ===== Мобильная версия ===== */
+@media (max-width:520px){
+  .app{padding:22px 16px 32px}
+  .cover{padding:32px 20px 28px}
+  .cover h1{font-size:30px}
+  .cover__sub{font-size:17px}
+  h1{font-size:24px}
+  .chat__msg{max-width:88%}
+  .foot__inner{padding:10px 16px;gap:10px;min-height:60px}
+  .foot__score{font-size:12px;max-width:46%}
+  .btn{padding:13px 18px;font-size:15px}
+  .calc-row{flex-direction:column;align-items:flex-start;gap:8px}
+  .calc-row__opts{width:100%}
+  .chip{flex:1}
+  .table{font-size:13px}
+  .table th,.table td{padding:8px 6px}
+}
+
+/* ===== Печать ===== */
+@media print{
+  .topbar,.foot,.devpanel,.btn,.overlay{display:none!important}
+  body{background:#fff}
+  .app{padding:0;max-width:100%}
+  .cover,.bubble,.chat,.doc,.card-stage{border-color:#ccc;box-shadow:none}
+  a[href]::after{content:" (" attr(href) ")";font-size:12px;color:#555}
+}
